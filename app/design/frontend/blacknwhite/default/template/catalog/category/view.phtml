@@ -1,0 +1,159 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @see Mage_Catalog_Block_Category_View
+ */
+?>
+<?php
+    $_helper    = $this->helper('catalog/output');
+    $_category  = $this->getCurrentCategory();
+    $_imgHtml   = '';
+    if ($_imgUrl = $_category->getImageUrl()) {
+        $_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" title="'.$this->escapeHtml($_category->getName()).'" /></p>';
+        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+    }
+?>
+<article>
+<?php if(!in_array($_category->getId(),array(50,336,18,35,16,24))){?>
+<header class="page-title category-title">
+    <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
+        <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
+    <?php endif; ?>
+    <h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+</header><?php }?>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+<?php if($_imgUrl): ?>
+    <?php echo $_imgHtml ?>
+<?php endif; ?>
+
+<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
+    <div class="category-description std">
+        <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
+    </div>
+<?php endif; ?>
+<?php //echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/category/slider.phtml')->toHtml();?>
+<?php if($this->isContentMode()): ?>
+    <?php echo $this->getCmsBlockHtml() ?>
+
+<?php elseif($this->isMixedMode()): ?>
+    <?php echo $this->getCmsBlockHtml() ?>
+    <?php echo $this->getProductListHtml() ?>
+
+<?php else: ?>
+    <?php echo $this->getProductListHtml() ?>
+<?php endif; ?>
+
+</article>
+<?php $_category_detail=Mage::registry('current_category');
+?>
+<?php 
+if (Mage::registry('current_category')) {
+if($_category_detail->getData('category_footer_desc')!=""){?>
+<div class="footer-content"><?php echo $_category_detail->getData('category_footer_desc');?></div>
+<?php }}?>
+	   <hr class="indent-24 white-space" /><header class="widget-title">
+<h2>Best Seller</h2>
+</header>
+<?php echo $this->getLayout()->createBlock('catalog/product_list')->setTemplate('ajax/catalog/product/view/best_seller.phtml')->toHtml();?>
+				   <hr class="indent-24 white-space" /><header class="widget-title">
+<h2>New Arrivals</h2>
+</header>
+<?php echo $this->getLayout()->createBlock('catalog/product_list')->setTemplate('ajax/catalog/product/view/new_arrivals.phtml')->toHtml();?>
+<script type="text/javascript">
+jQuery(document).ready(function(e) {
+    var length =jQuery('.sidebar.sidebar-left').height() - jQuery('.block-vertical-nav').height()-270 + jQuery('.sidebar.sidebar-left').offset().top;
+    jQuery(window).scroll(function () {
+
+        var scroll = jQuery(this).scrollTop();
+        var height = jQuery('.block-vertical-nav').height() + 'px';
+
+        if (scroll < jQuery('.sidebar.sidebar-left').offset().top) {
+
+            jQuery('.block-vertical-nav').css({
+                'position': 'relative',
+                'top': '0'
+            });
+
+        } else if (scroll > length && scroll < (jQuery("#footer").offset().top-jQuery("#footer").height()+550)) {
+
+           jQuery('.block-vertical-nav').css({
+                'position': 'fixed',
+                'top': '60px',
+                'height': height,
+                'width' : '270px'                
+            }); 
+
+        } else {
+
+            jQuery('.block-vertical-nav').css({
+                'position': 'relative',
+                'bottom': '0',
+                'top': 'auto'
+            });
+
+        }
+    });
+
+var length =jQuery('.sidebar.sidebar-left').height() - jQuery('.block-list.block-viewed').height()-400 + jQuery('.sidebar.sidebar-left').offset().top;
+    jQuery(window).scroll(function () {
+
+        var scroll = jQuery(this).scrollTop();
+        var height = jQuery('.block-list.block-viewed').height() + 'px';
+
+        if (scroll < jQuery('.sidebar.sidebar-left').offset().top) {
+
+            jQuery('.block-list.block-viewed').css({
+                'position': 'relative',
+                'top': '0'
+            });
+
+        } else if (scroll > length && scroll < (jQuery("#footer").offset().top-jQuery("#footer").height()+400)) {
+
+           jQuery('.block-list.block-viewed').css({
+                'position': 'fixed',
+                'top': '360px',
+                'height': height,
+                'width' : '270px'
+            }); 
+
+        } else {
+
+            jQuery('.block-list.block-viewed').css({
+                'position': 'relative',
+                'bottom': '0',
+                'top': 'auto'
+            });
+
+        }
+    });
+});
+</script>				   

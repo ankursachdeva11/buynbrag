@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orderxml>
+<orderInfo id="100000090">
+    <orderId>100000090</orderId>
+    <orderDate>9/6/2014 12:35 PM</orderDate>
+    <dropshipDate>Sat, 06 Sep 2014 07:05:32</dropshipDate>
+    <orderTimestamp>September 6, 2014 12:35:32 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>Ashish Kumar</Name>
+        <Street>52/124, C R Park
+New Delhi</Street>
+        <Postalcode>110019</Postalcode>
+        <City>Delhi</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>Ashish Kumar</Name>
+        <Street>52/124, C R Park
+New Delhi</Street>
+        <Postalcode>110019</Postalcode>
+        <City>Delhi</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Monte Cristo Folding Outdoor End Table </productName>
+<sku>S313P17039</sku>
+<quantity>1</quantity>
+<supplier>313</supplier>
+
+    </productList>
+</orderInfo>
+</orderxml>

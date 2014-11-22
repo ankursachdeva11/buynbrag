@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orderxml>
+<orderInfo id="100000019">
+    <orderId>100000019</orderId>
+    <orderDate>8/5/2014 5:15 PM</orderDate>
+    <dropshipDate>Tue, 05 Aug 2014 11:45:14</dropshipDate>
+    <orderTimestamp>August 5, 2014 5:15:14 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>jkhjkh kjhkjh</Name>
+        <Street>c r park</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>jkhjkh kjhkjh</Name>
+        <Street>c r park</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Set of Notebooks</productName>
+<sku>S108P1002</sku>
+<quantity>1</quantity>
+<supplier>108</supplier>
+
+    </productList>
+</orderInfo>
+
+
+<orderInfo id="100000055">
+    <orderId>100000055</orderId>
+    <orderDate>8/22/2014 5:37 PM</orderDate>
+    <dropshipDate>Fri, 22 Aug 2014 12:07:02</dropshipDate>
+    <orderTimestamp>August 22, 2014 5:37:02 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>asas asas</Name>
+        <Street>dsds
+dsds</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>asas asas</Name>
+        <Street>dsds
+dsds</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Set of Notebooks</productName>
+<sku>S108P1003</sku>
+<quantity>1</quantity>
+<supplier>108</supplier>
+
+    </productList>
+</orderInfo>
+
+
+<orderInfo id="100000087">
+    <orderId>100000087</orderId>
+    <orderDate>9/5/2014 10:20 PM</orderDate>
+    <dropshipDate>Fri, 05 Sep 2014 16:50:48</dropshipDate>
+    <orderTimestamp>September 5, 2014 10:20:48 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>Ankur Sachdeva</Name>
+        <Street>Gurgaon</Street>
+        <Postalcode>122002</Postalcode>
+        <City>GURGAON</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>Ankur Sachdeva</Name>
+        <Street>Gurgaon</Street>
+        <Postalcode>122002</Postalcode>
+        <City>GURGAON</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Slater the Sheep</productName>
+<sku>S108P275</sku>
+<quantity>1</quantity>
+<supplier>108</supplier>
+
+    </productList>
+</orderInfo>
+</orderxml>

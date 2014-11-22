@@ -1,0 +1,110 @@
+<?php $_product = $this->getProduct(); ?>
+<?php
+	$increments = 1;
+	$productData = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);
+	$qtyIncrements = $productData->getQtyIncrements();
+	if($qtyIncrements > 0){
+		$increments = $qtyIncrements;
+	}
+?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php if($_product->isSaleable()): ?>
+    <div class="add-to-cart">
+        <?php if(!$_product->isGrouped()): ?>
+		<label for="qty"><?php echo $this->__('Qty:') ?></label>
+        <div class="quantity-decrease" onclick="qtyDown()"><?php echo MAGE::helper('ThemeOptionsBlacknwhite')->getIcon('descreaseqty'); ?></div>
+		<input type="text" name="qty" id="qty" maxlength="12" value="<?php if($qtyIncrements > 0){echo $increments;}else{echo $this->getProductDefaultQty() * 1;} ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+        <div class="quantity-increase" onclick="qtyUp()"><?php echo MAGE::helper('ThemeOptionsBlacknwhite')->getIcon('increaseqty'); ?></div>
+		<?php endif; ?>
+        <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" id="addtocart" onclick=""><span><span><?php echo $buttonTitle ?></span></span></button>
+        <span id='ajax_loader' style='display:none'><img src='<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif')?>'/></span>
+        
+        <?php echo $this->getChildHtml('', true, true) ?>
+    </div>
+	<script type="text/javascript">
+		function qtyDown(){
+			qty_el = document.getElementById('qty');
+			qty = qty_el.value;
+			if( !isNaN( qty ) && qty > <?php echo $increments; ?> ){
+				qty_el.value = parseInt(qty_el.value)-<?php echo $increments; ?>
+			}
+			return false;
+		}
+		function qtyUp(){
+			qty_el = document.getElementById('qty');
+			qty = qty_el.value;
+			if( !isNaN( qty )) {
+				qty_el.value = parseInt(qty_el.value)+<?php echo $increments; ?>
+			}
+			return false;
+		}
+    </script>
+<?php endif; ?>
+  <script type="text/javascript">
+					   jQuery(document).ready(function(e) {
+                     jQuery("#addtocart").click(function(){
+
+		var htm=jQuery(".pincode_msg").html();
+	if(htm!='<span class="pincode-msg pincode-success"><strong>Yes :</strong> We deliver at this PIN Code</span>')
+	{
+		jQuery(".pincode_msg").html("<span class='pincode-msg'>Please check availability in your city</span>");	
+		jQuery(".pincode_msg").show();
+		return false;
+	}
+	else
+	{
+		jQuery(".pincode_msg").hide();	
+		productAddToCartForm.submit(this);	
+	}
+	
+	});
+	jQuery("input[name='pincode']").keypress(function(e){
+		if(e.which==13){
+		check_pincode();	
+		return false;	
+		}
+	});    
+						
+                    });
+					
+					
+                       function check_pincode(){
+	var pincode=jQuery("input[name='pincode']").val();	
+	if(pincode.length==6){
+		jQuery("#pp-pincode-loader").show();	
+	setTimeout(
+	jQuery.ajax({
+			url:"<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>pin_info/check_pin.php?pincode="+pincode,
+			cache:false,
+			success:function(html){
+				if(html>0){
+					jQuery(".pincode_msg").html("<span class='pincode-msg pincode-success'><strong>Yes :</strong> We deliver at this PIN Code</span>");	
+					jQuery(".pincode_msg").show();
+					jQuery(".pincode_success_continue").html('<span class="pincode-msg pincode-success">Please proceed to   <button type="button" title="Buy Now" class="button btn-cart-product"  onclick="productAddToCartForm.submit(this)"><span><span>Add To Cart</span></span></button></span>');	
+					jQuery(".pincode_success_continue").show();
+					jQuery("#addtocart").remove();
+				}
+				else{
+					jQuery(".pincode_msg").html("<span class='pincode-msg'><strong>Sorry :</strong> Currently we don't delivery at this pin code</span>");
+					jQuery(".pincode_msg").show();	
+					jQuery(".pincode_success_continue").html('');	
+					jQuery(".pincode_success_continue").hide();
+				}
+				jQuery("#pp-pincode-loader").hide();
+			}
+	}),1000);
+	}
+	else{
+		jQuery(".pincode_msg").html("<span class='pincode-msg'>Invalid Pincode</span>");	
+		jQuery(".pincode_msg").show();	
+		jQuery(".pincode_success_continue").html('');	
+					jQuery(".pincode_success_continue").hide();
+	}
+}
+
+                       
+                       </script>
+					   <p><input type="text" placeholder="Enter Pincode" name="pincode" /> <input class="button" type="button" name="" onclick="check_pincode();" value="check" />
+<img id="pp-pincode-loader" width="20" height="20" src="http://1.fimg.in/images/local_v2/icons/loader.gif" style="display: none;">
+<span class="pincode_msg" style="display:none;"></span>
+<span class="pincode_success_continue" style="display:none;"></span></p>

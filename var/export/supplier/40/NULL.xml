@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orderxml>
+<orderInfo id="100000021">
+    <orderId>100000021</orderId>
+    <orderDate>8/13/2014 12:53 PM</orderDate>
+    <dropshipDate>Wed, 13 Aug 2014 07:23:02</dropshipDate>
+    <orderTimestamp>August 13, 2014 12:53:02 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>test test</Name>
+        <Street>sdfsfs</Street>
+        <Postalcode>11222333</Postalcode>
+        <City>delhi</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>test test</Name>
+        <Street>sdfsfs</Street>
+        <Postalcode>11222333</Postalcode>
+        <City>delhi</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Wood and Bone Photo Frame</productName>
+<sku>S139P1515</sku>
+<quantity>1</quantity>
+<supplier>139</supplier>
+
+    </productList>
+</orderInfo>
+</orderxml>

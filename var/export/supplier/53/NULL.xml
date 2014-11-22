@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orderxml>
+<orderInfo id="100000023">
+    <orderId>100000023</orderId>
+    <orderDate>8/13/2014 1:14 PM</orderDate>
+    <dropshipDate>Wed, 13 Aug 2014 07:44:26</dropshipDate>
+    <orderTimestamp>August 13, 2014 1:14:25 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>ashish kumar</Name>
+        <Street>C R Parl</Street>
+        <Postalcode>400001</Postalcode>
+        <City>MUMBAI</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>ashish kumar</Name>
+        <Street>C R Parl</Street>
+        <Postalcode>400001</Postalcode>
+        <City>MUMBAI</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Red Container Cabinet</productName>
+<sku>S156P2978</sku>
+<quantity>1</quantity>
+<supplier>156</supplier>
+
+    </productList>
+</orderInfo>
+
+
+<orderInfo id="100000079">
+    <orderId>100000079</orderId>
+    <orderDate>9/4/2014 10:31 PM</orderDate>
+    <dropshipDate>Thu, 04 Sep 2014 17:01:11</dropshipDate>
+    <orderTimestamp>September 4, 2014 10:31:11 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>Ankur Sachdeva</Name>
+        <Street>Gurgaon</Street>
+        <Postalcode>122002</Postalcode>
+        <City>GURGAON</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>Ankur Sachdeva</Name>
+        <Street>Gurgaon</Street>
+        <Postalcode>122002</Postalcode>
+        <City>GURGAON</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Vintage Wine Box</productName>
+<sku>S156P3006</sku>
+<quantity>1</quantity>
+<supplier>156</supplier>
+
+    </productList>
+</orderInfo>
+
+
+<orderInfo id="100000080">
+    <orderId>100000080</orderId>
+    <orderDate>9/4/2014 10:38 PM</orderDate>
+    <dropshipDate>Thu, 04 Sep 2014 17:08:12</dropshipDate>
+    <orderTimestamp>September 4, 2014 10:38:11 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>Ankur Sachdeva</Name>
+        <Street>Gurgaon</Street>
+        <Postalcode>122002</Postalcode>
+        <City>GURGAON</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>Ankur Sachdeva</Name>
+        <Street>Gurgaon</Street>
+        <Postalcode>122002</Postalcode>
+        <City>GURGAON</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Vintage Wine Box</productName>
+<sku>S156P3006</sku>
+<quantity>1</quantity>
+<supplier>156</supplier>
+
+    </productList>
+</orderInfo>
+</orderxml>

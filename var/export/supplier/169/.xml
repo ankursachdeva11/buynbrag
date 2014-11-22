@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orderxml>
+<orderInfo id="100000056">
+    <orderId>100000056</orderId>
+    <orderDate>8/25/2014 8:50 PM</orderDate>
+    <dropshipDate>Mon, 25 Aug 2014 15:20:12</dropshipDate>
+    <orderTimestamp>August 25, 2014 8:50:12 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>Ankur Sachdeva</Name>
+        <Street>Gurgaon</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>Ankur Sachdeva</Name>
+        <Street>Gurgaon</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Claude Monet- Rue de la Bavole, Honfleur </productName>
+<sku>S277P14270</sku>
+<quantity>1</quantity>
+<supplier>277</supplier>
+
+    </productList>
+</orderInfo>
+</orderxml>

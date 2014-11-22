@@ -1,0 +1,214 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+
+?>
+<?php if (!($_shippingRateGroups = $this->getShippingRates())): ?>
+    <p><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
+<?php else: ?>
+<?php 
+	$postcode = $this->getAddress()->getPostcode();
+	if (empty($postcode)): ?>
+		<p><?php echo $this->__('Please enter your full address to obtain a shipping quote.') ?></p>
+	<?php else: ?>
+	    <dl class="sp-methods">
+	    <?php $shippingCodePrice = array(); ?>
+	    <?php $_sole = count($_shippingRateGroups) == 1; foreach ($_shippingRateGroups as $code => $_rates): ?>
+	        <dt><?php if($this->getCarrierName($code)!='flatrate') echo $this->getCarrierName($code) ?></dt>
+	        <dd>
+	            <ul>
+	            <?php $_sole = $_sole && count($_rates) == 1; foreach ($_rates as $_rate): ?>
+	                <?php $shippingCodePrice[] = "'".$_rate->getCode()."':".(float)$_rate->getPrice(); ?>
+	                <li <?php if($_rate->getCode()=='flatrate_flatrate'){ ?> style="display:none;" <?php }?>>
+	                   <?php if ($_rate->getErrorMessage()): ?>
+	                    <ul class="messages"><li class="error-msg"><ul><li><?php echo $_rate->getErrorMessage() ?></li></ul></li></ul>
+	                   <?php else: ?>
+	                        <?php if ($_sole) : ?>
+	                        <span class="no-display"><input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" /></span>
+	                        <?php else: ?>
+	                        <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' checked="checked"' ?> class="radio"/>
+	
+	                        <?php if ($_rate->getCode() === $this->getAddressShippingMethod()): ?>
+	                        <script type="text/javascript">
+	                            //<![CDATA[
+	                                lastPrice = <?php echo (float)$_rate->getPrice(); ?>;
+	                            //]]>
+	                        </script>
+	                        <?php endif; ?>
+	
+	                        <?php endif; ?>
+	                        <label for="s_method_<?php echo $_rate->getCode() ?>"><?php echo $_rate->getMethodTitle() ?>
+	                        <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+	                        <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+	                        <?php echo $_excl; ?>
+	                        <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+	                            (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+	                        <?php endif; ?>
+	                        </label>
+	                   <?php endif ?>
+	                </li>
+	            <?php endforeach; ?>
+	            </ul>
+	        </dd>
+	    <?php endforeach; ?>
+	    </dl>
+	<script type="text/javascript">
+	//<![CDATA[
+	    <?php if (!empty($shippingCodePrice)): ?>
+	        var shippingCodePrice = {<?php echo implode(',',$shippingCodePrice); ?>};
+	    <?php endif; ?>
+	
+	    $$('input[type="radio"][name="shipping_method"]').each(function(el){
+	        Event.observe(el, 'click', function(){
+	            if (el.checked == true) {
+	                var getShippingCode = el.getValue();
+	                <?php if (!empty($shippingCodePrice)): ?>
+	                    var newPrice = shippingCodePrice[getShippingCode];
+	                    if (!lastPrice) {
+	                        lastPrice = newPrice;
+	                        quoteBaseGrandTotal += newPrice;
+	                    }
+	                    if (newPrice != lastPrice) {
+	                        quoteBaseGrandTotal += (newPrice-lastPrice);
+	                        lastPrice = newPrice;
+	                    }
+	                <?php endif; ?>
+	                checkQuoteBaseGrandTotal = quoteBaseGrandTotal;
+	                return false;
+	            }
+	       });
+	    });
+	//]]>
+	</script>
+	<?php endif; ?>
+<?php endif; ?>
+<script type="text/javascript">
+jQuery(document).ready(function(e) {
+		jQuery("dt:contains('freeshipping')").remove();
+	var pincode=jQuery("#billing\\:postcode").val();
+	if(pincode!="" && pincode!='undefined'){
+	var pincode_len=jQuery("#billing\\:postcode").val().length;
+	if(pincode_len<6){
+		alert("Pincode should be 6 digit only.")
+			jQuery("#billing\\:postcode").focus();
+			return false;
+	}
+	else{
+		if(pincode<=400104 && pincode>=400001){
+					jQuery("#s_method_freeshipping_freeshipping").next('label').find('.price').html('OCTROI CHARGES OF 5% - 12% OF THE ITEM COST <br>WILL BE LEVIED ON YOUR PURCHASE');	
+					jQuery("#s_method_freeshipping_freeshipping").next('label').find('.price').show();
+				}
+				else{
+				jQuery("#s_method_freeshipping_freeshipping").next('label').find('.price').html('');
+				jQuery("#s_method_freeshipping_freeshipping").next('label').find('.price').hide();	
+				}
+	jQuery.ajax({
+		url:"<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>pin_info/check_pincode.php",cache:false,
+		success: function(res){
+		//alert(res+' - '+pincode);
+			if(res!=pincode){
+				
+				 jQuery.ajax({
+    url:"<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>pin_info/check_pin.php?pincode="+pincode,
+    cache:false,
+	dataType: "json",
+    success:function(html){
+      if(jQuery.trim(html[0])==0){
+		 // if(jQuery.trim(html[1])=='Regular'){
+		  alert("We are sorry but we do not ship to this pin code");
+		  jQuery("#billing\\:postcode").val('');
+		  jQuery("#billing\\:city").val('');
+          jQuery("#billing\\:region").val('');
+		  jQuery("#billing\\:postcode").focus();
+		 // }
+	  }
+	  jQuery.ajax({url:"<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>pin_info/get_details.php?p="+pincode,
+		  cache:false,
+		  dataType: "json",
+		  success: function(html){
+			  if(html!=null)
+			{
+				jQuery("#billing\\:city").val(html['city']);
+				jQuery("#billing\\:region").val(html['state']);
+				
+			}
+		  }
+		  });
+	  if(jQuery.trim(html[1])!='Regular'){
+			 // jQuery("#s_method_flatrate_flatrate").closest('li').show();
+			
+			 // jQuery("#s_method_freeshipping_freeshipping").parent('li').hide();
+			  jQuery("#s_method_flatrate_flatrate").prop( "checked", true );
+			  jQuery("#s_method_flatrate_flatrate").click();
+		  }
+		   else{
+			 //  jQuery("#s_method_freeshipping_freeshipping").parent('li').show();
+     		  	jQuery("#s_method_freeshipping_freeshipping").prop( "checked", true );
+				jQuery("#s_method_freeshipping_freeshipping").click();
+		  }
+		    
+    }
+  });
+			}
+			
+			var randoms =Math.floor((Math.random() * 100) + 1);
+			jQuery.ajax({    url:"<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>pin_info/check_pin.php?pincode="+pincode,
+		  cache:false,
+		  dataType: "json",
+		  success: function(html){
+			 // alert(html[1]);
+			  if(jQuery.trim(html[1])!='Regular'){
+			  jQuery("#s_method_flatrate_flatrate").parent('li').show();
+			
+			  jQuery("#s_method_freeshipping_freeshipping").parent('li').hide();
+			  var yetVisited = localStorage[randoms+'1'];
+    if (!yetVisited) {
+        // open popup
+        localStorage[randoms+'1'] = "yes";
+		jQuery("#s_method_flatrate_flatrate").prop( "checked", true );
+			  jQuery("#s_method_flatrate_flatrate").click();
+    }
+			 
+		  }
+		   else{
+			   jQuery("#s_method_freeshipping_freeshipping").parent('li').show();
+			   jQuery("#s_method_flatrate_flatrate").parent('li').hide();
+			    var yetVisited = localStorage[randoms+'2'];
+  			  if (!yetVisited) {
+    		    // open popup
+    	    localStorage[randoms+'2'] = "yes";
+			  	jQuery("#s_method_freeshipping_freeshipping").prop( "checked", true );
+				jQuery("#s_method_freeshipping_freeshipping").click();
+  			  }
+     		
+		  }
+			  
+		  }
+			});
+		}
+	});
+	}}
+});
+</script>

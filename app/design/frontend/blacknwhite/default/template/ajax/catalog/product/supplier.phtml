@@ -1,0 +1,10 @@
+<?php 
+$_proId  = Mage::registry('current_product')->getId();
+$_product= Mage::getModel('catalog/product')->load($_proId);
+/*$supplier=$_product->getAttributeText('supplier');
+?>
+<strong>Supplier:</strong><br />
+<a target="_blank" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>view-supplier?supplierId=<?php echo $supplier;?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>media/supplier/supplier_<?php echo $supplier;?>.jpg"/></a>
+<br />
+<br /><?php */?>
+SKU: <?php echo $_product->getSku();?>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>ITIB_MassImportProductRelations</name>
+    <version>1.0</version>
+    <stability>stable</stability>
+    <license>GPL</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>This module can be used to assign/update/remove product links by reading data from csv file.</summary>
+    <description>This module makes use of product link API's to assign/update/remove product links by reading data from csv file.</description>
+    <notes>This module makes use of product link API's to assign/update/remove product links by reading data from csv file.</notes>
+    <authors><author><name>andreas</name><user>auto-converted</user><email>andreas.gross@swiss-ecommerce.net</email></author><author><name>andreas</name><user>auto-converted</user><email>andreas.gross@swiss-ecommerce.net</email></author></authors>
+    <date>2010-02-08</date>
+    <time>10:59:33</time>
+    <contents><target name="mage"><dir name="app"><dir name="code"><dir name="community"><dir name="Mage"><dir name="Itib"><dir name="MassImportProductRelations"><dir name="Model"><dir name="Convert"><dir name="Adapter"><file name="Productimport.php" hash="a9ea5b90e2107eb2da4ab1eef675771b"/></dir></dir></dir></dir></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies/>
+</package>

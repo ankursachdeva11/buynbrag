@@ -1,0 +1,73 @@
+<config>
+	<tabs>
+        <adodis translate="label">
+            <label>Adodis</label>
+            <sort_order>190</sort_order>
+        </adodis>
+    </tabs>
+	<sections>
+		<adodis_latesttweets>
+            <label>Latest Tweets</label>
+            <tab>adodis</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>220</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+            	<adodis_general translate="label">
+					<label>General</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<adodis_latesttweets_enable>
+							<label>Activate Latest Tweets</label>
+							<frontend_type>select</frontend_type>
+							<source_model>latesttweets/adminhtml_system_config_source_enabledisable</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</adodis_latesttweets_enable>
+						<adodis_latest_tweets_username>
+							<label>Enter Twitter Username</label>
+							<frontend_type>Text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</adodis_latest_tweets_username>
+						<adodis_latest_tweets_display_number>
+							<label>Enter Number of tweets to be displayed</label>
+							<frontend_type>Text</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</adodis_latest_tweets_display_number>
+						<adodis_latest_tweets_display_scroll>
+							<label>Enable scroll</label>
+							<frontend_type>select</frontend_type>
+							<source_model>latesttweets/adminhtml_system_config_source_enablescroll</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</adodis_latest_tweets_display_scroll>
+						<adodis_latest_tweets_scroll_height>
+							<label>Enter height to limit Twitter container(in px)</label>
+							<frontend_type>Text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</adodis_latest_tweets_scroll_height>
+					</fields>
+				</adodis_general>
+            </groups>
+		</adodis_latesttweets>
+	</sections>
+</config>

@@ -1,0 +1,8 @@
+#--------------------------------------------------
+# Modman file for Aligent Feeds Reader
+#--------------------------------------------------
+
+#symlinking with modman
+app/code/community/Aligent/FeedsReader/
+app/design/frontend/base/default/template/aligent/feedsreader
+app/etc/modules/Aligent_FeedsReader.xml

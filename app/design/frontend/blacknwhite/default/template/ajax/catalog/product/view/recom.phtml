@@ -1,0 +1,11 @@
+<?php 
+$product_id = Mage::registry('current_product')->getId();
+$model = Mage::getModel('catalog/product');
+$product = $model->load($product_id);
+
+// Get all related product ids of $product.
+$allRelatedProductIds = $product->getRelatedProductIds();
+
+foreach ($allRelatedProductIds as $id) {
+	echo $id;
+}

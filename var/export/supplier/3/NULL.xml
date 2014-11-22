@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orderxml>
+<orderInfo id="100000008">
+    <orderId>100000008</orderId>
+    <orderDate>7/10/2014 1:41 PM</orderDate>
+    <dropshipDate>Thu, 10 Jul 2014 08:11:44</dropshipDate>
+    <orderTimestamp>July 10, 2014 1:41:44 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>Ashish Kumar</Name>
+        <Street>C R Park</Street>
+        <Postalcode>110019</Postalcode>
+        <City>New Delhi</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>Ashish Kumar</Name>
+        <Street>C R Park</Street>
+        <Postalcode>110019</Postalcode>
+        <City>New Delhi</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Heart Candle Stand</productName>
+<sku>S102P156</sku>
+<quantity>1</quantity>
+<supplier>102</supplier>
+
+    </productList>
+</orderInfo>
+</orderxml>

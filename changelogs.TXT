@@ -1,0 +1,15 @@
+HM_Bestseller - Change logs
+--------------------------------------
+Legend
+* New feature added
++ Fixed bug
+
+v2.1
++ Upgrade to be compatiple with 1.7.0
+* Fix style and css
+* Fix bestseller product collection not exactly.
+
+v1.2.1
++ Upgrade on Magento1600
+* Fix style and css
+* Fix bestseller product collection not exactly.

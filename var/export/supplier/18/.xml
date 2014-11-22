@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orderxml>
+<orderInfo id="100000068">
+    <orderId>100000068</orderId>
+    <orderDate>9/3/2014 9:20 PM</orderDate>
+    <dropshipDate>Wed, 03 Sep 2014 15:50:46</dropshipDate>
+    <orderTimestamp>September 3, 2014 9:20:46 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>Ankur Sachdeva</Name>
+        <Street>Gurgaon</Street>
+        <Postalcode>122002</Postalcode>
+        <City>GURGAON</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>Ankur Sachdeva</Name>
+        <Street>Gurgaon</Street>
+        <Postalcode>122002</Postalcode>
+        <City>GURGAON</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Iron Wire Mesh Stool</productName>
+<sku>S117P711</sku>
+<quantity>1</quantity>
+<supplier>117</supplier>
+
+    </productList>
+</orderInfo>
+</orderxml>

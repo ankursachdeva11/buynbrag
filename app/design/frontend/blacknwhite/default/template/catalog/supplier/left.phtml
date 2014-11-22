@@ -1,0 +1,40 @@
+<div class="block block-layered-nav">
+    <div class="block-title"><div class="left-divider" style="width: 129px;"></div>
+        <strong><span>Browse By</span></strong>
+    <div class="right-divider" style="width: 129px;"></div></div>
+    <div class="block-content">
+        <dl id="narrow-by-list2">
+            <dt class="last odd">Category</dt>
+            <dd class="last odd">
+                <ol>
+                <?php 
+				$productModel = Mage::getModel('catalog/product');
+				$attr = $productModel->getResource()->getAttribute("supplier");
+				if ($attr->usesSource()) {
+					$supplierId = $attr->getSource()->getOptionId($_REQUEST['supplierId']);
+				}
+				$catid=(isset($_REQUEST['category'])) ? $_REQUEST['category'] : 3;
+				
+				$subcategory = Mage::getModel('catalog/category')->getCategories($catid);
+				foreach($subcategory as $category){
+					$category = Mage::getModel('catalog/category')->load($category->getId());
+					//$_category = Mage::getModel('catalog/category')->load(3);
+  					  $_productCollection =$category->getProductCollection()->addCategoryFilter($category);
+
+//filter for products whose orig_price is greater than (gt) 100
+					$_productCollection->addFieldToFilter(array(
+					array('attribute'=>'supplier','eq'=>$supplierId),
+					));
+					$count=$_productCollection->count();
+					if($count!=0){
+					echo '<li><a href="'.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'view-supplier?supplierId='.$_REQUEST['supplierId'].'&category='.$category->getId().'">'.strtoupper($category->getName()).'</a> ('.$count.')</li>';
+					}
+				}
+				
+				?>
+                                                    </ol>
+            </dd>
+        </dl>
+        <script type="text/javascript">decorateDataList('narrow-by-list2')</script>
+    </div>
+</div>

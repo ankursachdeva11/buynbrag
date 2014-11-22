@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Adodis_Latesttweets>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Adodis_Latesttweets>
+    </modules>
+</config> 

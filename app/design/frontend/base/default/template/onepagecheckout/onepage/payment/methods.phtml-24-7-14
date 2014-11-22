@@ -1,0 +1,56 @@
+<?php if (!$methods = $this->getMethods()) : ?>
+<p><?php echo $this->helper('checkout')->__('Sorry, no quotes are available for this order at this time.') ?></p>
+<?php else : ?>
+<dl class="sp-methods">
+<?php foreach ($this->getMethods() as $_method): $_code = $_method->getCode() ?>
+    <dt>
+    <?php if( sizeof($this->getMethods()) > 1 ): ?>
+        <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->htmlEscape($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($this->getSelectedMethodCode()==$_code): ?> checked="checked"<?php endif; ?> class="radio" />
+    <?php else: ?>
+        <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+    <?php endif; ?>
+        <label for="p_method_<?php echo $_code ?>"><?php echo $this->htmlEscape($_method->getTitle()) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></label>
+    </dt>
+    <?php if ($html = $this->getPaymentMethodFormHtml($_method)): ?>
+    <dd>
+        <?php echo $html; ?>
+    </dd>
+    <?php endif; ?>
+<?php endforeach; ?>
+</dl>
+<script type="text/javascript">
+//<![CDATA[
+<?php echo $this->getChildChildHtml('scripts'); ?>
+payment.init();
+//]]>
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",");
+		}
+jQuery(document).ready(function(e) {
+        jQuery("#p_method_payucheckout_shared").parent('dt').hide();
+		jQuery("#p_method_payucheckout_shared").parent('dt').next('dd').hide();
+		jQuery("#checkout-payment-method-load .sp-methods").append('<dt><input id="p_method_payu_pseudo" value="ccsave" type="radio" name="payment2" title="Payu Checkout" onclick="" class="radio pp_method" autocomplete="off"><label for="p_method_payu_pseudo"> Payu Checkout</label></dt><dt><input id="p_method_pp_pseudo" value="ccsave" type="radio" name="payment2" title="Partial Payment" onclick="" class="radio pp_method" autocomplete="off"><label for="p_method_pp_pseudo"> Partial Payment</label></dt>');
+    });
+	jQuery(".pp_method").live('click',function(){
+		jQuery("#p_method_checkmo,#p_method_ccsave").prop('checked',false);
+		jQuery("#p_method_payucheckout_shared").prop('checked',true);
+		var id=jQuery(this).attr('id');
+		if(id=='p_method_pp_pseudo'){
+			var total='<?php echo number_format(Mage::getModel('checkout/session')->getQuote()->getGrandTotal(),0);?>';
+						var total = parseInt(total.replace(',',''));
+						var new_total=total/2;
+						var cod=total-new_total;
+			jQuery(".pp_payment_review").remove();
+				jQuery("#checkout-review-table > tfoot").append('<tr class="pp_payment_review"><td style="" class="a-right" colspan="2">Advance Payment</td><td style="" class="a-right"><span class="price">₹ '+numberWithCommas(new_total)+'</span></td></tr><tr class="pp_payment_review"><td style="" class="a-right" colspan="2">Cash On Delivery</td><td style="" class="a-right"><span class="price">₹ '+numberWithCommas(cod)+'</span></td></tr>');
+		
+		}
+		else {
+			jQuery(".pp_payment_review").remove();
+		}
+		});
+		jQuery("#p_method_checkmo,#p_method_ccsave").live('click',function(){
+				jQuery(".pp_method").prop('checked',false);
+				jQuery(".pp_payment_review").remove();
+		});
+</script>
+<?php endif; ?>

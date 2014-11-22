@@ -1,0 +1,34 @@
+<div class="grid_3" style="width:360px;">
+<div class="footer-block-title">
+<h2>Categories</h2>
+</div>
+<div class="custom-footer-content">
+<ul class="links">
+<?php $subcategory = Mage::getModel('catalog/category')->getCategories(3);
+foreach($subcategory as $category){
+	$category = Mage::getModel('catalog/category')->load($category->getId());
+	echo '<li style="float:left;width:50%;"><a style="font-size: 10px;" href="'.$category->getUrl().'">'.$category->getName().'</a></li>';
+}
+?>
+
+</ul>
+</div>
+</div>
+
+<div class="grid_6">
+<div class="footer-block-title">
+<h2>Most Popular Categories</h2>
+</div>
+<div class="custom-footer-content">
+<ul class="links categories-footer">
+<?php
+ $categories = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*');
+foreach($categories as $category){
+if($category->getData('most_popular_category')==1)
+{
+	echo '<li><a style="font-size: 10px;" href="'.$category->getUrl().'">'.$category->getName().'</a></li>';
+}
+}
+?>
+
+</ul></div></div>

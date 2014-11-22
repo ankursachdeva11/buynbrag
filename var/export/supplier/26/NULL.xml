@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orderxml>
+<orderInfo id="100000040">
+    <orderId>100000040</orderId>
+    <orderDate>8/14/2014 2:34 PM</orderDate>
+    <dropshipDate>Thu, 14 Aug 2014 09:04:52</dropshipDate>
+    <orderTimestamp>August 14, 2014 2:34:52 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>jc dwenfcjk</Name>
+        <Street>djweifjwi
+jdejwq</Street>
+        <Postalcode>400001</Postalcode>
+        <City>MUMBAI</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>jc dwenfcjk</Name>
+        <Street>djweifjwi
+jdejwq</Street>
+        <Postalcode>400001</Postalcode>
+        <City>MUMBAI</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Antique Armillary Book End</productName>
+<sku>S125P969</sku>
+<quantity>2</quantity>
+<supplier>125</supplier>
+
+    </productList>
+</orderInfo>
+
+
+<orderInfo id="100000054">
+    <orderId>100000054</orderId>
+    <orderDate>8/22/2014 5:34 PM</orderDate>
+    <dropshipDate>Fri, 22 Aug 2014 12:04:42</dropshipDate>
+    <orderTimestamp>August 22, 2014 5:34:42 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>Ashish Kumar</Name>
+        <Street>asa
+asa</Street>
+        <Postalcode>40000</Postalcode>
+        <City>MUMBAI</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>Ashish Kumar</Name>
+        <Street>asa
+asa</Street>
+        <Postalcode>40000</Postalcode>
+        <City>MUMBAI</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Theatre Style Table Lamp</productName>
+<sku>S125P939</sku>
+<quantity>1</quantity>
+<supplier>125</supplier>
+
+    </productList>
+</orderInfo>
+
+
+<orderInfo id="100000099">
+    <orderId>100000099</orderId>
+    <orderDate>9/16/2014 3:53 PM</orderDate>
+    <dropshipDate>Tue, 16 Sep 2014 10:23:57</dropshipDate>
+    <orderTimestamp>September 16, 2014 3:53:56 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>Naveta Mahajan</Name>
+        <Street>SA-004, The Vilas DLF Phase 2 
+Near oakwood apartments</Street>
+        <Postalcode>122002</Postalcode>
+        <City>GURGAON</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>Naveta Mahajan</Name>
+        <Street>SA-004, The Vilas DLF Phase 2 
+Near oakwood apartments</Street>
+        <Postalcode>122002</Postalcode>
+        <City>GURGAON</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Motor Head Tripod Lamp</productName>
+<sku>S125P966</sku>
+<quantity>1</quantity>
+<supplier>125</supplier>
+
+    </productList>
+</orderInfo>
+</orderxml>

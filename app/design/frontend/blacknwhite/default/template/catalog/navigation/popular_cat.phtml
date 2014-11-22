@@ -1,0 +1,69 @@
+<div class="grid_3 all-cat">
+<div class="footer-block-title">
+<h2>Categories</h2>
+</div>
+<div class="custom-footer-content">
+<ul class="links cat-footer-links">
+<?php $subcategory = Mage::getModel('catalog/category')->getCategories(3);
+foreach($subcategory as $category){
+	$category = Mage::getModel('catalog/category')->load($category->getId());
+	echo '<li><a href="'.$category->getUrl().'">'.strtoupper($category->getName()).'</a></li>';
+}
+?>
+
+</ul>
+</div>
+</div>
+
+<div class="grid_6 most-popular-cat">
+<div class="footer-block-title">
+<h2>Most Popular Categories</h2>
+</div>
+<div class="custom-footer-content">
+<ul class="links categories-footer">
+<?php
+ $categories = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*');
+foreach($categories as $category){
+if($category->getData('most_popular_category')==1)
+{
+	echo '<li><a style="font-size: 10px;" href="'.$category->getUrl().'">'.strtoupper($category->getName()).'</a></li>';
+}
+}
+?>
+
+</ul></div></div>
+
+
+<div style="float:left; width:22%;" class="grid_15" >
+<a class="twitter-timeline" href="https://twitter.com/BuynBrag" data-widget-id="502455838166896640">Tweets by @BuynBrag</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+</div>
+
+
+
+<script type="text/javascript">
+function showOptions(id){
+			jQuery('#fancybox'+id).trigger('click');
+		}
+		jQuery(document).ready(function(e) {
+            jQuery('.ajax-fancybox').fancybox(
+				{
+				   hideOnContentClick : true,
+				   width:600,
+				   autoDimensions: true,
+				   type : 'iframe',
+				   showTitle: false,
+				   scrolling: 'no',
+				   afterLoad: function(){
+						setTimeout(function(){
+							var frameBodyHeight = jQuery('.fancybox-iframe').contents().find('body').addClass('iframe-body').height();
+							if(jQuery(window).height() > frameBodyHeight+30){
+								jQuery('.fancybox-inner').css('height', frameBodyHeight);
+							}
+						}, 1000);
+					}
+				}
+			);
+        });
+</script>

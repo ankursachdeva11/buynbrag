@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+    <name>SMTP_Magento</name>
+    <version>0.1.0</version>
+    <stability>stable</stability>
+    <license>GPL</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>SMTP Magento Extension support all SMTP servers and also support SSL Authentication.</summary>
+    <description>&lt;p&gt;SMTP Magento Extension support all SMTP servers and also support SSL Authentication.&lt;/p&gt;&#xD;
+&lt;p&gt;You can set the SMTP host and port in System &gt; Configuration &gt; KSV Extensions &gt; System &gt; SMTP Configuration.&lt;/p&gt;</description>
+    <notes>SMTP Magento</notes>
+    <authors><author><name>ksvcorporation</name><user>ksvcorporation</user><email>ksvcorporation@gmail.com</email></author></authors>
+    <date>2014-03-01</date>
+    <time>18:26:11</time>
+    <contents><target name="magecommunity"><dir name="Mage"><dir name="Smtp"><dir name="Helper"><file name="Data.php" hash="b968445f17a7d023aeadacc22a3918f2"/></dir><dir name="Model"><dir name="Config"><dir name="Source"><file name="Auth.php" hash="e939d7fe00118112c301a29568a99154"/><file name="Ssl.php" hash="f1a4ebaf7ed7f917b474ca865419213f"/></dir></dir><dir name="Email"><file name="Template.php" hash="af6c0fc0fe6638c69f7308e774394f64"/></dir><file name="Email.php" hash="456fe985796472f1acb3c9de33d2c6f8"/></dir><dir name="etc"><file name="config.xml" hash="78c2861d039b229108b4befd88e131d3"/><file name="system.xml" hash="867810e0d7e3cf370024a5eac332b4db"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Mage_Smtp.xml" hash="5b7f6a26ca5ff4a89be481f772bb9fcb"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

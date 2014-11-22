@@ -1,0 +1,70 @@
+<?php
+/**
+ * @author		Sashas
+* @category    Sashas
+* @package     Sashas_OrderSuccessPage
+* @copyright   Copyright (c) 2013 Sashas IT Support Inc. (http://www.sashas.org)
+* @license     http://opensource.org/licenses/GPL-3.0  GNU General Public License, version 3 (GPL-3.0)
+*/
+$store_name= Mage::app()->getStore()->getName();
+$_customerId = Mage::getSingleton('customer/session')->getCustomerId();
+$visitorData = Mage::getModel('customer/customer')->load($_customerId);
+$billingaddress = Mage::getModel('customer/address')->load($visitorData->default_billing);
+$addressdata = $billingaddress ->getData();
+ $telephone=$addressdata['telephone'];
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+
+<?php if ($this->getOrderId()):?>
+    <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?>
+       <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.',Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'ordersuccesspage/index/0/id/'.Mage::registry('current_order')->getId().'/' );//str_replace('index/index','index',$this->getUrl('ordersuccesspage',array('id',Mage::registry('current_order')->getId())))) ?> 
+    </p>
+ 
+<?php endif;?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul> 
+<?php endif;?>
+<?php if ($this->getOrderId()):?>
+<?php echo $this->getLayout()->createBlock('sales/order_info')->setTemplate('ordersuccesspage/info.phtml')->toHtml();?> 
+<?php echo $this->getLayout()->createBlock('sales/order_items')->setTemplate('ordersuccesspage/items.phtml')->toHtml();?> 
+<?php endif;?>
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>
+<p class="check-points">You will receive an automated email confirming your order<br />
+We will deliver your order in the shortest possible time<br />
+If you may have any questions, you can call us on +91 8130 878 822 or email us on talktous@buynbrag.com</p>
+<script type="text/javascript">
+jQuery(document).ready(function(e) {
+    jQuery('title').html('Thank You - Buy N Brag');
+});
+</script>
+
+<?php
+$block_order= new Mage_Sales_Block_Order_Info();
+$_order = $block_order->getOrder();
+$order_id = $_order->getRealOrderId();
+$order = Mage::getModel('sales/order');
+
+// Load the order with the successful order id
+$order->loadByIncrementId($order_id);
+
+// Get the order grand total
+$total_price=$order->getGrandTotal();
+//print_r($addressdata['telephone']); // you can either var_dump or print the array of info
+
+  $url="http://testing.buynbrag.com/sms_code.php?number=$telephone&message=Thanks for shopping with BuynBrag.com. We have received your order no %order% amounting to rs %total_price%  and it s being processed. Please check your email for additional details.";
+  $v=file_get_contents($url);
+?>

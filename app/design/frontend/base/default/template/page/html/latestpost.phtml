@@ -1,0 +1,60 @@
+<?php
+	$rss = new DOMDocument();
+	$rss->load('http://blog.buynbrag.com/feed/');
+	$feed = array();
+	foreach ($rss->getElementsByTagName('item') as $node) {
+		$item = array ( 
+			'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
+			'desc' => $node->getElementsByTagName('description')->item(0)->nodeValue,
+			'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
+			'date' => $node->getElementsByTagName('pubDate')->item(0)->nodeValue,
+			);
+		array_push($feed, $item);
+	}
+	$limit = 4;
+	echo '<ul>';
+	for($x=0;$x<$limit;$x++) {
+		$title = str_replace(' & ', ' &amp; ', $feed[$x]['title']);
+		$link = $feed[$x]['link'];
+		$description = $feed[$x]['desc'];
+		//echo $comments = $feed[$x]['comments'];
+		$date = date('l F d, Y', strtotime($feed[$x]['date']));
+		//echo '<p><strong><a href="'.$link.'" title="'.$title.'">'.$title.'</a></strong><br />';
+		//echo '<small><em>Posted on '.$date.'</em></small></p>';
+		//echo '<p>'.$description.'</p>';
+		$imspos=strpos($description,'<img');
+		$im=substr($description,$imspos);
+		$impos=strpos($im,'>');
+		$image=substr($im,0,$impos+1);
+		$text=substr($im,$impos+1);
+		?>
+        
+        
+                            
+                            <li class="grid_3 latest-post">
+					<h3><a href="<?php echo $link;?>"><?php echo $title;?></a></h3>
+					<div class="postContent"><p><a href="<?php echo $link;?>" style="float: left;width: 100%;"><?php echo $image;?></a></p>
+<p class="truncated"><?php echo $text;?></p>
+</div>
+					<div class="info-box">
+						<div class="post-date">
+							<i class="fa fa-calendar"></i>
+							<?php echo $date;?>						</div>
+													
+												<div class="clear"></div>
+					</div>
+					<button onclick="setLocation('<?php echo $link;?>')" class="button btn-post" title="Read more" type="button"><span><span>Read more</span></span></button>
+					
+				</li>
+                
+                  
+        
+        
+        <?php
+	}
+?>  </ul>
+<script type="text/javascript">
+jQuery(document).ready(function(e) {
+    jQuery(".truncated").next('p').hide();
+});
+</script>

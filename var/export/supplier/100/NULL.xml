@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orderxml>
+<orderInfo id="100000037">
+    <orderId>100000037</orderId>
+    <orderDate>8/14/2014 12:06 PM</orderDate>
+    <dropshipDate>Thu, 14 Aug 2014 06:36:32</dropshipDate>
+    <orderTimestamp>August 14, 2014 12:06:32 PM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>test test</Name>
+        <Street>sdfsfs fhhfhf hfhf</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>test test</Name>
+        <Street>sdfsfs fhhfhf hfhf</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Rifle Stock Umbrella</productName>
+<sku>S207P6874</sku>
+<quantity>1</quantity>
+<supplier>207</supplier>
+
+    </productList>
+</orderInfo>
+</orderxml>

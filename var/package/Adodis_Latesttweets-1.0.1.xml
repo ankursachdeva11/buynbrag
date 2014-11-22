@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Adodis_Latesttweets</name>
+    <version>1.0.1</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">GPL</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Latest extension is using for Displaying and Managing Latest Tweets from Twitter.</summary>
+    <description>Latest extension is using for Displaying and Managing Latest Tweets from Twitter.</description>
+    <notes>Fixed  magento connect installation issue</notes>
+    <authors><author><name>Jextn Themes</name><user>adodistheme</user><email>magento-support@jextn.com</email></author></authors>
+    <date>2012-03-23</date>
+    <time>08:45:14</time>
+    <contents><target name="magelocal"><dir><dir name="Adodis"><dir name="Latesttweets"><dir name="Block"><file name="Latesttweets.php" hash="486d9d9187c95b2d95c91dfd7d344564"/></dir><dir name="Helper"><file name="Data.php" hash="8ee1abf1b43d38819a9f6a3043a0568a"/></dir><dir name="Model"><dir name="Adminhtml"><dir name="System"><dir name="Config"><dir name="Source"><file name="Enabledisable.php" hash="93282f5774cc69646101147c8234a56d"/><file name="Enablescroll.php" hash="d49f91984dc2f630a30d1de618a49217"/></dir></dir></dir></dir></dir><dir name="etc"><file name="config.xml" hash="ed9f8cc8ca703af8a8d613de90132566"/><file name="system.xml" hash="be34a1fb01f07c3e8737002845be4800"/></dir></dir></dir></dir></target><target name="mageetc"><dir><dir name="modules"><file name="Adodis_Latesttweets.xml" hash="330d4fa51c3ae3bd5c6389b4b06d41f5"/></dir></dir></target><target name="magedesign"><dir><dir name="frontend"><dir name="default"><dir name="default"><dir name="layout"><file name="latesttweets.xml" hash="6c26f8785b058d83ef8608c90582133b"/></dir><dir name="template"><dir name="latesttweets"><file name="latesttweets.phtml" hash="4318d6eb655644babc5c9077e894b875"/></dir></dir></dir></dir></dir></dir></target><target name="mageskin"><dir><dir name="frontend"><dir name="default"><dir name="default"><dir name="css"><file name="twitter.css" hash="44f11b94379892192255fe30ed3e9f44"/></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

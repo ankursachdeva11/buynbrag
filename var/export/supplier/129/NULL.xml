@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orderxml>
+<orderInfo id="100000031">
+    <orderId>100000031</orderId>
+    <orderDate>8/14/2014 10:04 AM</orderDate>
+    <dropshipDate>Thu, 14 Aug 2014 04:34:44</dropshipDate>
+    <orderTimestamp>August 14, 2014 10:04:44 AM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>test test</Name>
+        <Street>sff s sfsfs sfsfsf sf</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>test test</Name>
+        <Street>sff s sfsfs sfsfsf sf</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Essentials Pillow Filler</productName>
+<sku>S237P9145</sku>
+<quantity>1</quantity>
+<supplier>237</supplier>
+
+    </productList>
+</orderInfo>
+</orderxml>

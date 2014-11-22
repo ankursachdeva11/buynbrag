@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orderxml>
+<orderInfo id="100000058">
+    <orderId>100000058</orderId>
+    <orderDate>8/29/2014 10:29 AM</orderDate>
+    <dropshipDate>Fri, 29 Aug 2014 04:59:10</dropshipDate>
+    <orderTimestamp>August 29, 2014 10:29:10 AM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>Ashish Kumar</Name>
+        <Street>52/124, C R Park
+New Delhi</Street>
+        <Postalcode>110019</Postalcode>
+        <City>Delhi</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>Ashish Kumar</Name>
+        <Street>52/124, C R Park
+New Delhi</Street>
+        <Postalcode>110019</Postalcode>
+        <City>Delhi</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Viking Armor Helmet</productName>
+<sku>S111P319</sku>
+<quantity>1</quantity>
+<supplier>111</supplier>
+
+    </productList>
+</orderInfo>
+</orderxml>

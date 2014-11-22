@@ -1,0 +1,59 @@
+<?php
+/**
+ * @author		Sashas
+* @category    Sashas
+* @package     Sashas_OrderSuccessPage
+* @copyright   Copyright (c) 2013 Sashas IT Support Inc. (http://www.sashas.org)
+* @license     http://opensource.org/licenses/GPL-3.0  GNU General Public License, version 3 (GPL-3.0)
+*/
+?>
+<script type="text/javascript">
+var fb_param = {};
+fb_param.pixel_id = '6012971443632';
+fb_param.value = '0.00';
+fb_param.currency = 'INR';
+(function(){
+  var fpw = document.createElement('script');
+  fpw.async = true;
+  fpw.src = '//connect.facebook.net/en_US/fp.js';
+  var ref = document.getElementsByTagName('script')[0];
+  ref.parentNode.insertBefore(fpw, ref);
+})();
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6012971443632&amp;value=0&amp;currency=INR" /></noscript>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="print-row">
+    <h1><?php //echo $this->__('Your order has been received.') ?></h1>
+            <?php echo $this->__('<a class="print-btn" href="%s" onclick="this.target=\'_blank\'">Print</a>', $this->getPrintUrl()) ?>
+        <?php echo $this->getChildHtml() ?>
+    
+</div>
+<div class="left-info-thanku">
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('Thank you for your order !') ?></h2>
+<div class="tanku-txt">
+<span style="font-size:12px; font-style:italic; padding-bottom:20px;">Your order has been placed and is beign processed.</span>
+When the item(s) are shipped, you will receive an email with the Courier Tracking ID and the link where you can track your order. 
+</div>
+</div>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul> 
+<?php endif;?>
+<?php if ($this->getOrderId()):?>
+<?php echo $this->getLayout()->createBlock('sales/order_info')->setTemplate('ordersuccesspage/info.phtml')->toHtml();?> 
+<?php echo $this->getLayout()->createBlock('sales/order_items')->setTemplate('ordersuccesspage/items.phtml')->toHtml();?> 
+<?php endif;?>
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>

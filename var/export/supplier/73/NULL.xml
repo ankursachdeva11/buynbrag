@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orderxml>
+<orderInfo id="100000027">
+    <orderId>100000027</orderId>
+    <orderDate>8/14/2014 9:38 AM</orderDate>
+    <dropshipDate>Thu, 14 Aug 2014 04:08:28</dropshipDate>
+    <orderTimestamp>August 14, 2014 9:38:28 AM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>test test</Name>
+        <Street>sdfsfs fhhfhf hfhf</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>test test</Name>
+        <Street>sdfsfs fhhfhf hfhf</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>Orange Tree Warli Alarm Clock </productName>
+<sku>S176P16820</sku>
+<quantity>1</quantity>
+<supplier>176</supplier>
+
+    </productList>
+</orderInfo>
+
+
+<orderInfo id="100000028">
+    <orderId>100000028</orderId>
+    <orderDate>8/14/2014 9:42 AM</orderDate>
+    <dropshipDate>Thu, 14 Aug 2014 04:12:04</dropshipDate>
+    <orderTimestamp>August 14, 2014 9:42:04 AM IST</orderTimestamp>
+    <shippingAddress>
+    	<Name>test test</Name>
+        <Street>sdfsfs fhhfhf hfhf</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </shippingAddress>
+    <billingAddress>
+    	<Name>test test</Name>
+        <Street>sdfsfs fhhfhf hfhf</Street>
+        <Postalcode>110019</Postalcode>
+        <City>DELHI</City>
+        <IsoCountry>IN</IsoCountry>
+    </billingAddress>
+    <productList>
+    <productName>ShotGlass - Paji Truck</productName>
+<sku>S176P16898</sku>
+<quantity>1</quantity>
+<supplier>176</supplier>
+
+    </productList>
+</orderInfo>
+</orderxml>

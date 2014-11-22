@@ -1,0 +1,167 @@
+<?php
+/**
+ * @author		Sashas
+* @category    Sashas
+* @package     Sashas_OrderSuccessPage
+* @copyright   Copyright (c) 2013 Sashas IT Support Inc. (http://www.sashas.org)
+* @license     http://opensource.org/licenses/GPL-3.0  GNU General Public License, version 3 (GPL-3.0)
+*/
+?>
+
+
+
+<!-- Google Code for Purchase Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 976198675;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "cEZnCJ2KqAgQk7i-0QM";
+var google_conversion_value = 0;
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript"
+src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt=""
+src="//www.googleadservices.com/pagead/conversion/976198675/?value=0&amp;lab
+el=cEZnCJ2KqAgQk7i-0QM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+<?php
+$order_id = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+
+// Set the order model
+$order = Mage::getModel('sales/order');
+
+// Load the order with the successful order id
+$order->loadByIncrementId($order_id);
+
+// Get the order grand total
+$total_price=$order->getGrandTotal();
+$codFee=$order->getCodFee();
+
+$shipping= $order->getShippingAmount();
+$tax=$order->getTaxAmount();
+
+ $store_name= Mage::app()->getStore()->getName();
+$_customerId = Mage::getSingleton('customer/session')->getCustomerId();
+$visitorData = Mage::getModel('customer/customer')->load($_customerId);
+$billingaddress = Mage::getModel('customer/address')->load($visitorData->default_billing);
+$addressdata = $billingaddress ->getData();
+$city = $addressdata['city'];
+$state=$addressdata['region'];
+$country = $addressdata['country_id'];
+$telephone=$addressdata['telephone'];
+
+?>
+<script type="text/javascript">
+ 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-47418568-1']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_addTrans',
+    '<?php echo $order_id?>',           // transaction ID - required
+    '<?php echo $store_name;?>',  // affiliation or store name
+    '<?php echo $total_price;?>',          // total - required
+    '<?php echo $tax;?>',           // tax
+    '<?php echo $shipping;?>',              // shipping
+    '<?php echo $city;?>',       // city
+    '<?php echo $state;?>',     // state or province
+    '<?php echo $country;?>'             // country
+  ]);
+ 
+   // add item might be called for every item in the shopping cart
+   // where your ecommerce engine loops through each item in the cart and
+   // prints out _addItem for each
+   <?php foreach($order->getItemsCollection() as $_item){
+	    $product = $_item->getProduct();
+ 
+        // Get categories id of product
+        $cats = $product->getCategoryIds();
+ 
+        // Get name of categories
+		 $cat_name='';
+		 foreach ($cats as $category_id) {
+            $_cat = Mage::getModel('catalog/category')->load($category_id) ;
+            $cat_name.= $_cat->getName().',';
+        }    
+		$cat_name=rtrim($cat_name,',');
+		?>
+  _gaq.push(['_addItem',
+    '<?php echo $order_id?>',           // transaction ID - required
+    '<?php echo $_item->getSku();?>',           // SKU/code - required
+    '<?php  echo $_item->getName();?>',        // product name
+    '<?php echo $cat_name?>',   // category or variation
+    '<?php echo Mage::helper('tax')->getPrice($product, $_item->getPrice());?>',          // unit price - required
+    '<?php echo $_item->getQtyOrdered();?>'               // quantity - required
+  ]);
+  <?php }?>
+  _gaq.push(['_trackTrans']); //submits transaction to the Analytics servers
+ 
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+ 
+</script>
+<?php  if(intval($codFee)>0){ ?>
+<script>
+jQuery(document).ready(function(e) {
+    jQuery('.subtotal').after('<tr class="cod a-first">        <td colspan="4" class="a-right">                        Cash On Delivery Fee                    </td>        <td class="last a-right">                        <span class="price"><span class="WebRupee"> Rs. </span><?php echo number_format(intval($codFee),2);?></span>                    </td>    </tr>');
+});
+</script>
+
+<?php }
+echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="print-row">
+    <h1><?php //echo $this->__('Your order has been received.') ?></h1>
+            <?php echo $this->__('<a class="print-btn" href="%s" onclick="this.target=\'_blank\'">Print</a>', $this->getPrintUrl()) ?>
+        <?php echo $this->getChildHtml() ?>
+    
+</div>
+<div class="left-info-thanku">
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('Thank you for your order !') ?></h2>
+<div class="tanku-txt">
+<span style="font-size:12px; font-style:italic; padding-bottom:20px;">Your order has been placed and is beign processed.</span>
+When the item(s) are shipped, you will receive an email with the Courier Tracking ID and the link where you can track your order. 
+</div>
+</div>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul> 
+<?php endif;?>
+<?php if ($this->getOrderId()):?>
+<?php echo $this->getLayout()->createBlock('sales/order_info')->setTemplate('ordersuccesspage/info.phtml')->toHtml();?> 
+<?php echo $this->getLayout()->createBlock('sales/order_items')->setTemplate('ordersuccesspage/items.phtml')->toHtml();?> 
+<?php endif;?>
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>
+
+
+<?php
+
+//print_r($addressdata['telephone']); // you can either var_dump or print the array of info
+
+ $url="http://www.alinahome.com/sms_send.php?telephone=$telephone&order_id=$order_id&order_status=1&total_price=".$total_price;
+ $v=file_get_contents($url);
+?>
+
